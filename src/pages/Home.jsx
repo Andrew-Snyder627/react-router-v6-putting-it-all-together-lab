@@ -13,6 +13,7 @@ function Home() {
         </p>
         <nav>
           <Link to="/directors">View Directors</Link>
+          {" | "}
           <Link to="/about">Learn More About This App</Link>
         </nav>
       </main>

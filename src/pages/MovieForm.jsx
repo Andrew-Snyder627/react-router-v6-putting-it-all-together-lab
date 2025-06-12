@@ -37,9 +37,7 @@ function MovieForm() {
       })
       .then((data) => {
         console.log(data);
-        setDirectors((prev) =>
-          prev.map((d) => (d.id === updated.id ? updated : d))
-        );
+        setDirectors((prev) => prev.map((d) => (d.id === data.id ? data : d)));
         navigate(`/directors/${id}/movies/${newMovie.id}`);
       })
       .catch(console.log);
