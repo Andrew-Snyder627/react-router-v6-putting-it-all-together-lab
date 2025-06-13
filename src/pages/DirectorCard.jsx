@@ -3,7 +3,7 @@ import { useParams, Outlet, Link, useOutletContext } from "react-router-dom";
 function DirectorCard() {
   const { id } = useParams();
   const { directors, setDirectors } = useOutletContext();
-  const director = directors.find((d) => d.id === parseInt(id));
+  const director = directors.find((d) => d.id === id);
 
   if (!director) {
     return <h2>Director not found.</h2>;
