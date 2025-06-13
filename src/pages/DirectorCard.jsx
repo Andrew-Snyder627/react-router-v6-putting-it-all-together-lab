@@ -17,11 +17,14 @@ function DirectorCard() {
       <ul>
         {director.movies.map((movie) => (
           <li key={movie.id}>
+            {/* Links to nested movie pages */}
             <Link to={`movies/${movie.id}`}>{movie.title}</Link>
           </li>
         ))}
       </ul>
+      {/* Links to nested new movie form */}
       <Link to={`movies/new`}>Add New Movie</Link>
+      {/* Enables nested rendering via Outlet context */}
       <Outlet context={{ director, setDirectors }} />
     </div>
   );

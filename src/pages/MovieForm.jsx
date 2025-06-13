@@ -6,9 +6,9 @@ function MovieForm() {
   const [title, setTitle] = useState("");
   const [time, setTime] = useState("");
   const [genres, setGenres] = useState("");
-  const { id } = useParams();
+  const { id } = useParams(); // Extracts director ID from URL
   const navigate = useNavigate();
-  const { director, setDirectors } = useOutletContext();
+  const { director, setDirectors } = useOutletContext(); // Access current director
 
   if (!director) {
     return <h2>Director not found.</h2>;
@@ -16,12 +16,14 @@ function MovieForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Construct new movie with unique ID
     const newMovie = {
       id: uuidv4(),
       title,
       time: parseInt(time),
       genres: genres.split(",").map((genre) => genre.trim()),
     };
+    // PATCH request to update directors movie list
     fetch(`http://localhost:4000/directors/${id}`, {
       method: "PATCH",
       headers: {
@@ -37,7 +39,9 @@ function MovieForm() {
       })
       .then((data) => {
         console.log(data);
+        // Update State with new movie
         setDirectors((prev) => prev.map((d) => (d.id === data.id ? data : d)));
+        // Navigate to new movie details
         navigate(`/directors/${id}/movies/${newMovie.id}`);
       })
       .catch(console.log);

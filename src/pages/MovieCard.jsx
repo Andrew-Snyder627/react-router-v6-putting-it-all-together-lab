@@ -1,11 +1,12 @@
 import { useParams, useOutletContext } from "react-router-dom";
 
 function MovieCard() {
-  const { movieId } = useParams();
-  const { director } = useOutletContext();
+  const { movieId } = useParams(); // Extracts movie ID from nested route
+  const { director } = useOutletContext(); // Gets current director context
 
   if (!director) return <h2>Director not found.</h2>;
 
+  // Finds specific movie via ID
   const movie = director.movies.find((movie) => movie.id === movieId);
   if (!movie) return <h2>Movie not found.</h2>;
 

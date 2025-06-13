@@ -6,6 +6,7 @@ const DirectorContainer = () => {
   const [directors, setDirectors] = useState([]);
 
   useEffect(() => {
+    // Fetch list of directors
     fetch("http://localhost:4000/directors")
       .then((r) => {
         if (!r.ok) {
@@ -22,6 +23,7 @@ const DirectorContainer = () => {
       <NavBar />
       <main>
         <h1>Welcome to the Director's Directory!</h1>
+        {/* Passes state/context down to nested components */}
         <Outlet context={{ directors, setDirectors }} />
       </main>
     </>
