@@ -68,7 +68,7 @@ npm run test
 1. Start JSON Server backend:
 
    ```bash
-   json-server --watch db.json --port 4000
+   npm run server
    ```
 
 2. Start the frontend dev server:
